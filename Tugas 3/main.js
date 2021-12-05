@@ -121,7 +121,7 @@ function main() {
         gl.FLOAT, 
         false, 
         9 * Float32Array.BYTES_PER_ELEMENT, 
-        3 * Float32Array.BYTES_PER_ELEMENT
+        6 * Float32Array.BYTES_PER_ELEMENT
     );
     gl.enableVertexAttribArray(aColor);
     var aNormal = gl.getAttribLocation(shaderProgram, "aNormal");
@@ -131,7 +131,7 @@ function main() {
         gl.FLOAT, 
         false, 
         9 * Float32Array.BYTES_PER_ELEMENT, 
-        6 * Float32Array.BYTES_PER_ELEMENT
+        3 * Float32Array.BYTES_PER_ELEMENT
     );
     gl.enableVertexAttribArray(aNormal);
 
@@ -165,8 +165,8 @@ function main() {
     // Define the lighting and shading
     var uLightConstant = gl.getUniformLocation(shaderProgram, "uLightConstant");
     var uAmbientIntensity = gl.getUniformLocation(shaderProgram, "uAmbientIntensity");
-    gl.uniform3fv(uLightConstant, [1.0, 1.0, 1.0]);   // orange light
-    gl.uniform1f(uAmbientIntensity, 0.424) // light intensity: 224 (NRP) + 200 = 242
+    gl.uniform3fv(uLightConstant, [1, 1, 1]);   // orange light
+    gl.uniform1f(uAmbientIntensity, 0.424) // light intensity: 224 (NRP) + 200 = 424
     // var uLightDirection = gl.getUniformLocation(shaderProgram, "uLightDirection");
     // gl.uniform3fv(uLightDirection, [2.0, 0.0, 0.0]);    // light comes from the right side
     var uLightPosition = gl.getUniformLocation(shaderProgram, "uLightPosition");
