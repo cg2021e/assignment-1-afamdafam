@@ -191,7 +191,7 @@ function main() {
 		"uAmbientIntensity"
 	);
 	gl.uniform3fv(uLightConstant, [1.0, 1.0, 1.0]); // white light
-	gl.uniform1f(uAmbientIntensity, 0.424); // light intensity: 42 (NRP) + 200 = 242
+	gl.uniform1f(uAmbientIntensity, 0.424); // light intensity: 224 (NRP) + 200 = 424
 	// var uLightDirection = gl.getUniformLocation(shaderProgram, "uLightDirection");
 	// gl.uniform3fv(uLightDirection, [2.0, 0.0, 0.0]);    // light comes from the right side
 	var uLightPosition = gl.getUniformLocation(shaderProgram, "uLightPosition");
