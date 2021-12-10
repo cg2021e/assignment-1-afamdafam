@@ -7,7 +7,7 @@ function main() {
     var y_cube = [...box];
 	var vertices = [];
 
-	var indices = [...indice_right, ...indice_left, ...indice_box];
+	var indices = [...indice_right, ...indice_left, ...indice_box, ...indice_plane];
 
 	// Create a linked-list for storing the vertices data
 	var vertexBuffer = gl.createBuffer();
@@ -207,7 +207,7 @@ function main() {
 	
 
 	function render() {
-		vertices = [...jar_right, ...jar_left, ...y_cube];
+		vertices = [...jar_right, ...jar_left, ...y_cube,...plane];
 		gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
 		gl.bufferData(
 			gl.ARRAY_BUFFER,
@@ -224,7 +224,7 @@ function main() {
 		gl.uniformMatrix3fv(uNormalModel, false, normalModel);
 		// Reset the frame buffer
 		gl.enable(gl.DEPTH_TEST);
-		gl.clearColor(0.1, 0.1, 0.1, 1.0);
+		gl.clearColor(0.5, 0.5, 0.5, 1.0);
 		gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 		gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
 		requestAnimationFrame(render);
