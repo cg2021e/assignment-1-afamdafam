@@ -39,7 +39,7 @@ function main() {
             gl_Position = uProjection * uView * uModel * (vec4(aPosition * 2. / 3., 1.25));
             vColor = aColor;
             vNormal = aNormal;
-            vPosition = (uModel * (vec4(aPosition * 2. / 3., 1.25))).xyz;
+            vPosition = (uModel * (vec4(aPosition * 2. / 3., 1))).xyz;
             vShininessConstant = aShininessConstant;
         }
     `;
@@ -204,42 +204,7 @@ function main() {
 	);
 	gl.uniform3fv(uViewerPosition, camera);
 
-	function onKeyPressed(event) {
-		if (event.keyCode == 87) {
-			for (let i = 0; i < y_cube.length; i += 10) {
-				y_cube[i + 1] += 0.04;
-				lightPosition[1] += 0.04 * 1 / 20;
-				console.log("Test");
-			}
-		} else if (event.keyCode == 83) {
-			for (let i = 0; i < y_cube.length; i += 10) {
-				y_cube[i + 1] -= 0.04;
-				lightPosition[1] -= 0.04 * 1 / 20;
-			}
-		} else if (event.keyCode == 65) {
-			camera[0] -= 0.04;
-			camNow[0] -= 0.04;
-			glMatrix.mat4.lookAt(
-				view,
-				camera, // camera position
-				camNow, // the point where camera looks at
-				[0, 1, 0] // up vector of the camera
-			);
-			gl.uniformMatrix4fv(uView, false, view);
-		} else if (event.keyCode == 68) {
-			camera[0] += 0.04;
-			camNow[0] += 0.04;
-			glMatrix.mat4.lookAt(
-				view,
-				camera, // camera position
-				camNow, // the point where camera looks at
-				[0, 1, 0] // up vector of the camera
-			);
-			gl.uniformMatrix4fv(uView, false, view);
-		}
-	}
-
-	document.addEventListener("keydown", onKeyPressed, false);
+	
 
 	function render() {
 		vertices = [...jar_right, ...jar_left, ...y_cube];
